@@ -1,5 +1,5 @@
 import core from '@modular-rocks/core';
-import builder from '../../builder';
+import bundler from '../../../../.././bundler';
 import './placeholder';
 export default (function () {
   var _window$ModularRocksW = window.ModularRocksWebpack.global,
@@ -9,8 +9,8 @@ export default (function () {
       refined = _window$ModularRocksW.refined,
       dirKeys = _window$ModularRocksW.dirKeys;
   opts.dir = dir;
-  builder.set('dir', dir);
-  builder.set('keys', dirKeys);
+  bundler.set('dir', dir);
+  bundler.set('keys', dirKeys);
 
   if (config) {
     config.extensions && Object.keys(config.extensions).forEach(function (key) {

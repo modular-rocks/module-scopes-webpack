@@ -43,8 +43,5 @@
     "url": "ssh://git@github.com:modular-rocks/webpack.git",
     "directory": "@modular-rocks/webpack"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/modular-rocks"
-  },
   "dependencies": {}
 }

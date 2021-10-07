@@ -4,4 +4,4 @@
 
 ## Installation
 
-- Running `npm install @modular-rocks/webrocks` will install this component in your project.
+- Running `npm install @modular-rocks/webpack` will install this component in your project.

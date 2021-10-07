@@ -4,7 +4,7 @@ export default (function (dirname) {
       resource: dirname + '/build/placeholder',
       exclude: /node_modules/,
       use: [{
-        loader: dirname + '/loader',
+        loader: dirname + '/script',
         options: {
           opts: opts
         }

@@ -6,12 +6,14 @@ export default (function (_ref) {
       types = opts.types,
       app = opts.app,
       path = opts.path,
-      _dirKeys = opts._dirKeys,
       base = opts.base,
       configUrl = opts.configUrl,
       record = opts.record,
       pack = opts.pack,
-      folder = opts.folder;
+      folder = opts.folder,
+      bundler = opts.bundler;
+
+  var _dirKeys = opts.bundler.get('keys');
 
   for (var key in _dirKeys) {
     _dirKeys[key] = _dirKeys[key].replace(base, '.');
@@ -19,7 +21,6 @@ export default (function (_ref) {
 
   var cleaned = {
     types: types,
-    _dirKeys: _dirKeys,
     record: record,
     configUrl: configUrl,
     dirname: dirname,
@@ -28,5 +29,5 @@ export default (function (_ref) {
     folder: folder,
     path: path
   };
-  return "\nlet RocksWebpack = window.ModularRocksWebpack || (window.ModularRocksWebpack = {global: {}})\nif (!RocksWebpack || (RocksWebpack && !RocksWebpack.initialized)) {\n  RocksWebpack.initialized = true;\n  const opts = " + JSON.stringify(cleaned) + ";\n  opts.root = opts.root || \"" + process.env.PWD + "\";\n  RocksWebpack.global.opts = opts;\n  RocksWebpack.global.refined = " + JSON.stringify(refined) + ";\n  RocksWebpack.global.scoped = " + JSON.stringify(scoped) + ";\n}\n";
+  return "\nlet RocksWebpack = window.ModularRocksWebpack || (window.ModularRocksWebpack = {global: {}})\nif (!RocksWebpack || (RocksWebpack && !RocksWebpack.initialized)) {\n  RocksWebpack.initialized = true;\n  const opts = " + JSON.stringify(cleaned) + ";\n  opts.root = opts.root || \"" + process.env.PWD + "\";\n  RocksWebpack.global.opts = opts;\n  RocksWebpack.global.refined = " + JSON.stringify(refined) + ";\n  RocksWebpack.global.scoped = " + JSON.stringify(scoped) + ";\n  RocksWebpack.global.dirKeys = " + JSON.stringify(_dirKeys) + ";\n}\n";
 });

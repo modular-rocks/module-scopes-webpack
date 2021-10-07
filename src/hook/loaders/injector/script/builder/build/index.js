@@ -1,14 +1,14 @@
 import core from '@modular-rocks/core'
 
-import bundler from '../../bundler'
+import builder from '../../builder'
 
 import './placeholder'
 
 export default () => {
   const { dir, config, opts, refined, dirKeys } = window.ModularRocksWebpack.global
   opts.dir = dir
-  bundler.set('dir', dir)
-  bundler.set('keys', dirKeys)
+  builder.set('dir', dir)
+  builder.set('keys', dirKeys)
 
   if (config) {
     config.extensions && Object.keys(config.extensions).forEach(key => {

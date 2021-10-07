@@ -1,6 +1,6 @@
 {
   "name": "@modular-rocks/webpack",
-  "version": "0.1.1-development",
+  "version": "0.1.2-development",
   "description": "Modular Rocks for Webpack",
   "browser": "lib/index.js",
   "main": "lib/index.js",
@@ -42,6 +42,9 @@
     "type": "git",
     "url": "ssh://git@github.com:modular-rocks/webpack.git",
     "directory": "@modular-rocks/webpack"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   },
   "dependencies": {}
 }

@@ -1,4 +1,5 @@
 import lib from './index.js'
+import bundler from '../../hook/bundler'
 
 describe("ModularRocks Webpack set-default-params", () => {
   test("the default params are set", () => {
@@ -8,10 +9,11 @@ describe("ModularRocks Webpack set-default-params", () => {
     const equal = {
       app: 'app',
       base: `${process.env.PWD}/hello/world/app`,
+      bundler,
       dirname: `${process.env.PWD}/hello/world`,
       path: '/hello/world',
       pwd: process.env.PWD,
-      "regex": /\.jsx?$/,
+      "regex": /\.jsx?$/
     }
     expect(result).toEqual(equal);
   });

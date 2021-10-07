@@ -23,7 +23,8 @@ var removeRelativeDot = function removeRelativeDot(path) {
 
 var extractScopedPath = function extractScopedPath(path, app) {
   var re = new RegExp('^' + app);
-  store.keys[path] = path;
+  var keys = get('keys');
+  keys[path] = path;
   return {
     scopedPath: path.match(re) ? path.replace(base, '') : path,
     fullpath: path
@@ -40,8 +41,10 @@ var resolve = function resolve(path, opts) {
 
 var load = function load(meta, metadata, env) {
   var filepath = clean([metadata.absolutePath, meta.filename].join('/'));
-  var key = store.keys[filepath];
-  var fn = store.dir(filepath);
+  var keys = get('keys');
+  var dir = get('dir');
+  var key = keys[filepath];
+  var fn = dir(key);
 
   if (!fn) {
     throw Error('Filename not found at ' + filepath);

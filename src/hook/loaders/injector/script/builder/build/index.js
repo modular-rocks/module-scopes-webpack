@@ -9,6 +9,7 @@ export default () => {
   opts.dir = dir
   bundler.set('dir', dir)
   bundler.set('keys', dirKeys)
+  opts.bundler = bundler
 
   if (config) {
     config.extensions && Object.keys(config.extensions).forEach(key => {

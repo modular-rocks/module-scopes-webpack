@@ -9,8 +9,8 @@ const resolvePath = (path) => store.dir && store.dir.resolve(path) || path
 const removeRelativeDot = (path) => path[0] == '.' && path.substr(1) || path
 const extractScopedPath = (path, app) => {
   const re = new RegExp('^' + app)
-
-  store.keys[path] = path
+  const keys = get('keys')
+  keys[path] = path
 
   return {
     scopedPath: path.match(re) ? path.replace(base, '') : path,
@@ -29,8 +29,10 @@ const resolve = (path, opts) => {
 
 const load = (meta, metadata, env) => {
   const filepath = clean([metadata.absolutePath, meta.filename].join('/'))
-  const key = store.keys[filepath]
-  const fn = store.dir(filepath)
+  const keys = get('keys')
+  const dir = get('dir')
+  const key = keys[filepath]
+  const fn = dir(key)
 
   if (!fn) {
     throw Error('Filename not found at ' + filepath)

@@ -1,10 +1,14 @@
+import bundler from '../../.././bundler'
+
+
 export default ({ opts, refined, scoped }) => {
   const { dirname, types, app, path, base, configUrl, record, pack, folder, bundler } = opts;
 
   const _dirKeys  = opts.bundler.get('keys')
 
+  const dirKeys  = {}
   for (var key in _dirKeys) {
-    _dirKeys[key] = _dirKeys[key].replace(base, '.')
+    dirKeys[key] = _dirKeys[key].replace(base, '.')
   }
 
   const cleaned = {
@@ -15,7 +19,7 @@ export default ({ opts, refined, scoped }) => {
     base,
     pack,
     folder,
-    path
+    path,
   }
 
   return `
@@ -27,7 +31,7 @@ if (!RocksWebpack || (RocksWebpack && !RocksWebpack.initialized)) {
   RocksWebpack.global.opts = opts;
   RocksWebpack.global.refined = ${JSON.stringify(refined)};
   RocksWebpack.global.scoped = ${JSON.stringify(scoped)};
-  RocksWebpack.global.dirKeys = ${JSON.stringify(_dirKeys)};
+  RocksWebpack.global.dirKeys = ${JSON.stringify(dirKeys)};
 }\n`
 
 }

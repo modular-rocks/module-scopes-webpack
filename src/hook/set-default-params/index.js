@@ -1,6 +1,7 @@
 import { tools } from '@modular-rocks/core'
 import { api } from '../../api'
 const { clean } = tools
+import bundler from '../../hook/bundler'
 
 export default (opts) => {
   const { path, app } = opts
@@ -9,5 +10,7 @@ export default (opts) => {
   opts.regex = opts.regex || /\.jsx?$/
   const base = `${process.env.PWD}/${path}${app ? `/${app}` : ''}`
   opts.base = clean(base)
+  opts.bundler = bundler
+  bundler.set('keys', {})
   return opts
 }

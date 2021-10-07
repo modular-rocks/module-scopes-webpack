@@ -1,8 +1,8 @@
 export default (function (dirname) {
   return function (opts) {
+    console.log(2321321, dirname, dirname + '/build/placeholder');
     return {
       resource: dirname + '/build/placeholder',
-      exclude: /node_modules/,
       use: [{
         loader: dirname + '/script',
         options: {

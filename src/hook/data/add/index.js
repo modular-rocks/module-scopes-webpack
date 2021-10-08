@@ -1,6 +1,6 @@
-export const write = (name, source, assets, ConcatSource) => ({ id, files }) => {
-  if (name !== id) return
-  const filename = Array.from(files)[0]
+export const write = (entrypointName, source, assets, ConcatSource) => ({ name, files }) => {
+  if (entrypointName !== name) return
+  const filename = Array.from(files).filter((x) => x.match('js'))[0]
   const _source = assets[filename]._source
   assets[filename]._source = new ConcatSource(source, _source)
 }

@@ -7,8 +7,8 @@ export default (function () {
       config = _window$ModularRocksW.config,
       opts = _window$ModularRocksW.opts,
       refined = _window$ModularRocksW.refined,
-      dirKeys = _window$ModularRocksW.dirKeys;
-  opts.dir = dir;
+      dirKeys = _window$ModularRocksW.dirKeys; // opts.dir = dir
+
   bundler.set('dir', dir);
   bundler.set('keys', dirKeys);
   opts.bundler = bundler;

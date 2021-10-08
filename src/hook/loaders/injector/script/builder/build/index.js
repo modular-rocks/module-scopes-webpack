@@ -6,7 +6,7 @@ import './placeholder'
 
 export default () => {
   const { dir, config, opts, refined, dirKeys } = window.ModularRocksWebpack.global
-  opts.dir = dir
+  // opts.dir = dir
   bundler.set('dir', dir)
   bundler.set('keys', dirKeys)
   opts.bundler = bundler

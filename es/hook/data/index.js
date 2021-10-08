@@ -6,8 +6,8 @@ var meta = {
 };
 export default (function (compiler, opts) {
   var ConcatSource = compiler.webpack.sources.ConcatSource;
-  var source = prepare(opts);
   compiler.hooks.make.tap('ModularRocksWebpackAddData', function (compilation) {
+    var source = prepare(opts);
     var callback = add(compilation, source, ConcatSource);
     compilation.hooks.processAssets.tap(meta, callback);
   });

@@ -12,8 +12,8 @@ export default () => {
   opts.bundler = bundler
 
   if (config) {
-    config.extensions && Object.keys(config.extensions).forEach(key => {
-      core.extensions.add(key, config.extensions[key])
+    config.enhancers && Object.keys(config.enhancers).forEach(key => {
+      core.enhancers.add(key, config.enhancers[key])
     });
     core.store.set(opts.base, 'config', config)
   }

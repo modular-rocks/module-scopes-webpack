@@ -2,7 +2,7 @@ import bundler from '../../.././bundler'
 
 
 export default ({ opts, refined, scoped }) => {
-  const { dirname, types, app, path, base, configUrl, record, pack, folder, bundler } = opts;
+  const { dirname, factories, app, path, base, configUrl, record, pack, folder, bundler } = opts;
 
   const _dirKeys  = opts.bundler.get('keys')
 
@@ -12,7 +12,7 @@ export default ({ opts, refined, scoped }) => {
   }
 
   const cleaned = {
-    types,
+    factories,
     record,
     configUrl,
     dirname,

@@ -4,7 +4,7 @@ export default (function (_ref) {
       refined = _ref.refined,
       scoped = _ref.scoped;
   var dirname = opts.dirname,
-      types = opts.types,
+      factories = opts.factories,
       app = opts.app,
       path = opts.path,
       base = opts.base,
@@ -23,7 +23,7 @@ export default (function (_ref) {
   }
 
   var cleaned = {
-    types: types,
+    factories: factories,
     record: record,
     configUrl: configUrl,
     dirname: dirname,

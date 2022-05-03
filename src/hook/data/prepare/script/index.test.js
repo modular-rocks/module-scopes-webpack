@@ -6,7 +6,7 @@ const bundler = {
 
 describe("ModularRocks Webpack script", () => {
   test("Empty scope returns empty object", () => {
-    const opts = {types: ['Pages', 'Components'], app: 'index', bundler}
+    const opts = {factories: ['Pages', 'Components'], app: 'index', bundler}
     const refined = {}
     const scoped = {}
 
@@ -16,7 +16,7 @@ describe("ModularRocks Webpack script", () => {
 let RocksWebpack = window.ModularRocksWebpack || (window.ModularRocksWebpack = {global: {}})
 if (!RocksWebpack || (RocksWebpack && !RocksWebpack.initialized)) {
   RocksWebpack.initialized = true;
-  const opts = {"types":["Pages","Components"]};
+  const opts = {"factories":["Pages","Components"]};
   opts.root = opts.root || "/Users/alexdollery/projects/modular-rocks-org/webpack";
   RocksWebpack.global.opts = opts;
   RocksWebpack.global.refined = {};

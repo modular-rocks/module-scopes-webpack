@@ -1,3 +1,5 @@
+import ModularRocks from '@modular-rocks/core'
+
 var isOnNodeJs = false;
 if (typeof process != "undefined") {
   isOnNodeJs = true;
@@ -6,7 +8,7 @@ if (typeof process != "undefined") {
 import api from './api'
 import get from './hook/loaders/injector/script/get'
 
-let obj = {api, get}
+let obj = {api, get, ModularRocks}
 
 if (isOnNodeJs) {
   const Hook = require('./hook')

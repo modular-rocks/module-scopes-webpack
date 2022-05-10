@@ -1,12 +1,35 @@
-export default function (compiler, opts) {
-  compiler.hooks.afterPlugins.tap('ModularRocksWebpackResolvePath', function (compiler) {
-    var resolve = compiler.options.resolve;
+import builder from './injector/script/builder';
+var isNode = typeof module !== 'undefined' && module.exports;
 
-    if (!resolve.fallback) {
-      resolve.fallback = {};
+var dirname = function dirname() {
+  return isNode ? __dirname : '';
+};
+
+var injector = function injector(opts) {
+  return {
+    test: opts.regex,
+    exclude: /node_modules/,
+    use: [{
+      loader: dirname() + '/injector',
+      options: {
+        opts: opts
+      }
+    }]
+  };
+};
+
+export default function (compiler, opts, added) {
+  compiler.hooks.afterPlugins.tap('ModularRocksWebpackLoaders', function (compiler) {
+    var rules = compiler.options.module.rules;
+
+    if (!added['injector']) {
+      rules.push(injector(opts));
+      added['injector'] = true;
     }
 
-    resolve.fallback.fs = false;
-    resolve.fallback.path = require.resolve("path-browserify");
+    if (!added['builder']) {
+      rules.push(builder.rule(opts));
+      added['builder'] = true;
+    }
   });
 }

@@ -1,6 +1,6 @@
 {
   "name": "@modular-rocks/webpack",
-  "version": "0.2.1-development",
+  "version": "0.2.11-development",
   "description": "Modular Rocks for Webpack",
   "browser": "lib/index.js",
   "main": "lib/index.js",
@@ -22,7 +22,8 @@
     "travis-deploy-once": "travis-deploy-once"
   },
   "peerDependencies": {
-    "@modular-rocks/core": "*"
+    "@modular-rocks/core": "*",
+    "path-browserify": "*"
   },
   "devDependencies": {
     "babel-core": "^6.0.14",
@@ -47,6 +48,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@modular-rocks/core": "0.1.6-development"
+    "@modular-rocks/core": "0.1.6-development",
+    "path-browserify": "^1.0.1"
   }
 }

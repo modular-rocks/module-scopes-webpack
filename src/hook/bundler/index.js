@@ -25,8 +25,6 @@ const resolve = (path, opts) => {
   return extractScopedPath(path, app)
 }
 
-
-
 const load = (meta, metadata, env) => {
   const filepath = clean([metadata.absolutePath, meta.filename].join('/'))
   const keys = get('keys')
@@ -37,7 +35,15 @@ const load = (meta, metadata, env) => {
   if (!fn) {
     throw Error('Filename not found at ' + filepath)
   }
-  return fn.default || fn
+
+  try {
+    return fn.default || fn;
+  }
+  catch(error) {
+    return function fallback() {
+      return (fn.default || fn).apply(null, arguments)
+    }
+  }
 }
 
 export default {

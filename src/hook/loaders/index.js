@@ -1,11 +1,15 @@
 import builder from './injector/script/builder'
 const isNode = typeof module !== 'undefined' && module.exports
 const dirname = () => isNode ? __dirname : ''
+const path = require('path')
 
 const injector = (opts) => {
   return {
-    test: opts.regex,
+    test: opts.injectorRegex,
     exclude: /node_modules/,
+    include: [
+      `${opts.base}/`,
+    ],
     use: [
          {
            loader: dirname() + '/injector',

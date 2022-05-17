@@ -1,6 +1,6 @@
 {
   "name": "@modular-rocks/webpack",
-  "version": "0.2.12-development",
+  "version": "0.2.22-development",
   "description": "Modular Rocks for Webpack",
   "browser": "lib/index.js",
   "main": "lib/index.js",

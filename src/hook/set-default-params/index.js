@@ -4,7 +4,7 @@ const { clean } = tools
 import bundler from '../../hook/bundler'
 
 const warn = (option, value) => {
-  if (value && !value.source) return
+  if (!value || value && value.source) return
   const text = `You must add a regular expression as the ${option} option. Received: `
   console.warn(text, value)
 }

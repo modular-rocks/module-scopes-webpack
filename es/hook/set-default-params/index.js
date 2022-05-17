@@ -4,7 +4,7 @@ var clean = tools.clean;
 import bundler from '../../hook/bundler';
 
 var warn = function warn(option, value) {
-  if (value && !value.source) return;
+  if (!value || value && value.source) return;
   var text = "You must add a regular expression as the " + option + " option. Received: ";
   console.warn(text, value);
 };

@@ -14,8 +14,8 @@ export default (function () {
   opts.bundler = bundler;
 
   if (config) {
-    config.enhancers && Object.keys(config.enhancers).forEach(function (key) {
-      core.enhancers.add(key, config.enhancers[key]);
+    config.decorators && Object.keys(config.decorators).forEach(function (key) {
+      core.decorators.add(key, config.decorators[key]);
     });
     core.store.set(opts.base, 'config', config);
   }

@@ -1,6 +1,6 @@
 {
   "name": "@modular-rocks/webpack",
-  "version": "0.2.24-development",
+  "version": "0.3.0-development",
   "description": "Modular Rocks for Webpack",
   "browser": "lib/index.js",
   "main": "lib/index.js",
@@ -48,7 +48,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@modular-rocks/core": "0.1.7-development",
+    "@modular-rocks/core": "0.2.0-development",
     "path-browserify": "^1.0.1"
   }
 }

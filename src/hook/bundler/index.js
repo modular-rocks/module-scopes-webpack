@@ -25,24 +25,33 @@ const resolve = (path, opts) => {
   return extractScopedPath(path, app)
 }
 
+
+
+const find = function(module) {
+  return function fallback() {
+    return (module.default || module).apply(null, arguments)
+  }
+}
+
 const load = (meta, metadata, env) => {
   const filepath = clean([metadata.absolutePath, meta.filename].join('/'))
   const keys = get('keys')
   const dir = get('dir')
   const key = keys[filepath]
-  const fn = dir(key)
+  const module = dir(key)
 
-  if (!fn) {
+  if (!module) {
     throw Error('Filename not found at ' + filepath)
   }
 
   try {
-    return fn.default || fn;
+    if (module && !module.default && module.__esModule) {
+      return find(module)
+    }
+    return module.default || module
   }
   catch(error) {
-    return function fallback() {
-      return (fn.default || fn).apply(null, arguments)
-    }
+    return find(module)
   }
 }
 
